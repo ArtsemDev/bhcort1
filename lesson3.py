@@ -199,7 +199,10 @@ from collections import *
 
 # n = int(input('n: '))
 # users = {
-#     i: {'name': input('name: '), 'email': input('email: ')}
+#     i: {
+#         key: input(f'{key}: ')
+#         for key in ('name', 'email')
+#     }
 #     for i in range(n)
 # }
 # print(users)
