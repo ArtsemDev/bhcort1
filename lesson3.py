@@ -188,3 +188,18 @@ from collections import *
 #     1: {'name': 'petya', 'email': 'petya@info.com'},
 #     2: {'name': 'masha', 'email': 'masha@info.com'},
 # }
+
+# n = int(input('n: '))
+# numbers = [2 ** i for i in range(1, n+1)]
+# print(numbers)
+
+# text = input('text: ')
+# counter = {i: text.count(i) for i in set(text)}
+# print(counter)
+
+# n = int(input('n: '))
+# users = {
+#     i: {'name': input('name: '), 'email': input('email: ')}
+#     for i in range(n)
+# }
+# print(users)
