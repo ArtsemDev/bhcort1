@@ -416,3 +416,7 @@
 #     for number in line:
 #         print(number, end=' ')
 #     print()
+
+# numbers = [2, 5, 2, 4, 3, 7, 4, 5, 2]
+# numbers.sort(key=lambda x: x % 2 != 0)
+# print(numbers)
