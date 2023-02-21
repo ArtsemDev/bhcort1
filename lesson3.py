@@ -183,7 +183,7 @@ from collections import *
 # text = 'hello world'
 # data = {'h': 1, 'e': 1, 'l': 3, 'o': 2, ' ': 1, 'w': 1, 'r': 1, 'd': 1}
 
-# users = {
+# users.csv = {
 #     0: {'name': 'vasya', 'email': 'vasya@info.com'},
 #     1: {'name': 'petya', 'email': 'petya@info.com'},
 #     2: {'name': 'masha', 'email': 'masha@info.com'},
@@ -198,11 +198,11 @@ from collections import *
 # print(counter)
 
 # n = int(input('n: '))
-# users = {
+# users.csv = {
 #     i: {
 #         key: input(f'{key}: ')
 #         for key in ('name', 'email')
 #     }
 #     for i in range(n)
 # }
-# print(users)
+# print(users.csv)
