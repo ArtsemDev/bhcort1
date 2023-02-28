@@ -1,12 +1,25 @@
 from sqlalchemy import create_engine, select, update, delete, and_, or_, any_
 from sqlalchemy.orm import Session, sessionmaker
+from pydantic import BaseModel, Field
 
 from models import Category, Product
 
 
-cat = Category()
-for i in cat(order_by='-name'):
-    print(i)
+# class CategoryModel(BaseModel):
+#     id: int = None
+#     name: str = Field(max_length=64)
+#
+#     class Config:
+#         orm_mode = True
+
+
+# cat = Category.get(3)
+# cat_model = CategoryModel(**cat.dict())
+# cat_model = CategoryModel.from_orm(cat)
+# print(cat_model)
+# cat = Category()
+# for i in cat(order_by='-name'):
+#     print(i)
 
 # cat = Category()
 # cat.execute()
