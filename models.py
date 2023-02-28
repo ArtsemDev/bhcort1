@@ -1,4 +1,4 @@
-from sqlalchemy import Column, INT, VARCHAR, DECIMAL, ForeignKey, create_engine, select
+from sqlalchemy import Column, INT, VARCHAR, DECIMAL, ForeignKey, create_engine, select, desc
 from sqlalchemy.orm import DeclarativeBase, declared_attr, sessionmaker, Session
 
 
@@ -59,6 +59,42 @@ class Base(DeclarativeBase):
         if '_sa_instance_state' in data:
             del data['_sa_instance_state']
         return data
+
+    def __call__(
+            self,
+            order_by: str = 'id',
+            **kwargs
+    ):
+        if order_by.startswith('-'):
+            order_by = desc(order_by.removeprefix('-'))
+        setattr(self, '__filter', kwargs)
+        setattr(self, '__order_by', order_by)
+        return self.__iter__()
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        i = getattr(self, 'i', False)
+        if not i:
+            setattr(self, 'i', 0)
+        _filter = getattr(self, '__filter', {})
+        order_by = getattr(self, '__order_by', 'id')
+        with self.session() as session:
+            obj = session.scalars(
+                select(self.__class__)
+                .order_by(order_by)
+                .filter_by(**_filter)
+                .limit(1)
+                .offset(i)
+            )
+            setattr(self, 'i', i + 1)
+            obj = obj.all()
+            if obj:
+                return obj[0]
+            else:
+                setattr(self, 'i', 0)
+                raise StopIteration
 
 
 class Category(Base):

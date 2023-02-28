@@ -5,7 +5,11 @@ from models import Category, Product
 
 
 cat = Category()
-cat.execute()
+for i in cat(order_by='-name'):
+    print(i)
+
+# cat = Category()
+# cat.execute()
 # cats = Category.all()
 # print(cats)
 
