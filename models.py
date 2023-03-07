@@ -127,3 +127,8 @@ class Product(Base):
 class ProductImage(Base):
     url = Column(VARCHAR(256), nullable=False)
     product_id = Column(ForeignKey('product.id', ondelete='CASCADE'), nullable=False)
+
+
+class User(Base):
+    email = Column(VARCHAR(128), nullable=False, unique=True)
+    hashed_password = Column(VARCHAR(512), nullable=False)
