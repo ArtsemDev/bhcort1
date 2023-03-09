@@ -67,3 +67,35 @@ class User(Base):
 #         .join(Language, User.language_id == Language.pk)
 #     )
 #     print(objs.all())
+from threading import *
+from queue import Queue
+from time import sleep
+
+
+lock = Lock()
+# q = Queue()
+# s = Semaphore(5)
+# b = Barrier(5)
+# e = Event()
+# e.is_set()
+# e.wait()
+# q.qsize()
+# q.empty()
+# q.full()
+# q.put()
+# q.put_nowait()
+# q.get()
+
+
+def main():
+    for i in range(10):
+        lock.acquire()
+        print(current_thread().name)
+        lock.release()
+        sleep(1)
+
+
+# thread = Thread(target=main, name='CustomThread')
+# thread.start()
+# thread.join(timeout=5)
+# thread.is_alive()
