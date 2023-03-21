@@ -1,7 +1,7 @@
 from inspect import iscoroutinefunction
 
 from sqlalchemy import Column, INT, VARCHAR, DECIMAL, ForeignKey, create_engine, select, desc
-from sqlalchemy.orm import DeclarativeBase, declared_attr, sessionmaker, Session
+from sqlalchemy.orm import DeclarativeBase, declared_attr, sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
 
